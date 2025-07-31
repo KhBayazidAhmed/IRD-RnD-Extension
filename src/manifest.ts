@@ -32,7 +32,8 @@ export default defineManifest({
     48: 'icon48.png',
     128: 'icon128.png',
   },
-  permissions: ['activeTab', 'storage'],
+  permissions: ['activeTab', 'storage', 'tabs', 'scripting'],
+  host_permissions: ['<all_urls>'],
   content_scripts: [
     {
       js: isDev
@@ -43,7 +44,12 @@ export default defineManifest({
   ],
   web_accessible_resources: [
     {
-      resources: ['*.js', '*.css', 'public/*'],
+      resources: [
+        'assets/*.js',
+        'assets/*.css',
+        'src/ai-scripts/websites/*.js',
+        'icon*.png',
+      ],
       matches: ['<all_urls>'],
     },
   ],
